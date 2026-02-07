@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day Dhvani 🌹</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+
+body{
+min-height:100vh;
+background:radial-gradient(circle at top,#3b0a15,#050103 70%);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* Lock */
+.lock{
+position:fixed;inset:0;
+background:#050103;
+display:flex;align-items:center;justify-content:center;
+z-index:99999;text-align:center;
+}
+.lock input{
+padding:15px 30px;
+border-radius:30px;border:none;
+font-size:1.1rem;text-align:center;
+}
+.hint{color:#ff9aa2;margin-top:15px;animation:pulseHint 1.5s infinite;display:none}
+@keyframes pulseHint{50%{opacity:.4}}
+
+/* Stars */
+#stars{position:fixed;inset:0;z-index:-2}
+
+/* Blur background */
+.blur-bg{
+filter:blur(8px) brightness(0.7);
+transition:filter .6s ease;
+}
+
+/* Heartbeat */
+.heartbeat-pulse{animation:screenBeat .6s infinite}
+@keyframes screenBeat{
+50%{box-shadow:inset 0 0 220px rgba(255,77,109,.25)}
+}
+
+/* Header */
+header{
+height:100vh;
+display:flex;flex-direction:column;
+align-items:center;justify-content:center;
+text-align:center;padding:20px;
+}
+header h1{
+font-size:3rem;color:#ff4d6d;
+text-shadow:0 0 30px rgba(255,77,109,.9);
+}
+.silhouette{font-size:90px;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-15px)}}
+
+/* Moon */
+#moon{
+width:120px;height:120px;border-radius:50%;
+background:#fff;box-shadow:0 0 30px rgba(255,255,255,.8);
+position:absolute;top:50px;right:40px;overflow:hidden;
+}
+#moon::before{
+content:'';position:absolute;inset:0;background:#050103;
+animation:phase 12s infinite linear;
+}
+@keyframes phase{
+from{transform:translateX(100%)}
+to{transform:translateX(-100%)}
+}
+
+/* Typing */
+#typing{max-width:700px;font-size:1.2rem;color:#ffd6de;margin-top:20px}
+
+/* Sections */
+section{padding:80px 20px;max-width:900px;margin:auto;text-align:center}
+h2{color:#ff758f;font-size:2.3rem;margin-bottom:20px}
+
+.love-card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+border-radius:20px;padding:30px;
+box-shadow:0 0 40px rgba(255,77,109,.25);
+}
+.slide{width:220px;border-radius:20px;display:none;margin:auto}
+
+/* Button */
+.button{
+padding:14px 34px;border-radius:30px;border:none;
+font-size:1.1rem;color:#fff;
+background:linear-gradient(45deg,#ff4d6d,#ff8fa3);
+cursor:pointer;
+}
+
+/* Ring */
+#ring{font-size:100px;animation:drop 1.2s ease-out forwards}
+@keyframes drop{
+0%{transform:translateY(-200px) scale(.5);opacity:0}
+100%{transform:translateY(0) scale(1)}
+}
+
+/* Rose beat */
+.rose-beat{animation:roseBeat .6s infinite}
+@keyframes roseBeat{
+50%{transform:scale(1.25);filter:drop-shadow(0 0 30px #ff4d6d)}
+}
+
+/* Petals */
+.rose-petal{
+position:fixed;top:-20px;font-size:22px;
+animation:fall 3s linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);opacity:0}
+}
+
+/* Shooting star */
+.shooting-star{
+position:fixed;width:2px;height:80px;
+background:linear-gradient(white,transparent);
+animation:shoot 1.2s linear forwards;
+}
+@keyframes shoot{
+to{transform:translate(100vw,100vh);opacity:0}
+}
+
+/* Popup */
+.popup{
+position:fixed;inset:0;
+background:rgba(0,0,0,.6);
+display:none;
+align-items:center;justify-content:center;
+z-index:100000;
+}
+.popup-box{
+background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+padding:35px;border-radius:25px;
+max-width:380px;text-align:center;
+box-shadow:0 0 60px rgba(255,77,109,.8);
+animation:popupIn .6s ease;
+}
+.popup-box h2{margin-bottom:15px}
+.popup-box p{line-height:1.6;margin-bottom:20px}
+.popup-box button{
+padding:12px 30px;border:none;border-radius:30px;
+background:#fff;color:#ff4d6d;font-size:1rem;cursor:pointer;
+}
+@keyframes popupIn{
+from{transform:scale(.5);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+footer{padding:40px;text-align:center;background:rgba(0,0,0,.3)}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<!-- LOCK -->
+<div class="lock" id="lock">
+  <div>
+    <h2>Only Dhvani can unlock this 💖</h2><br>
+    <input placeholder="Type Dhvani" oninput="unlock(this.value)">
+    <div id="hint" class="hint">Hint: Your name lives in Sumeet’s heart 💖</div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="mainContent">
+
+<header>
+<div id="moon"></div>
+<h1>Happy Rose Day Dhvani 🌹</h1>
+<div id="rose" class="silhouette">🌹</div>
+<div class="silhouette">🌙💑</div>
+<p id="typing"></p>
+</header>
+
+<section>
+<h2>Our Memories 📸</h2>
+<div class="love-card">
+<img src="https://iili.io/fmIgX6v.md.jpg" class="slide">
+<img src="https://iili.io/fmIg8tn.md.jpg" class="slide">
+<img src="https://iili.io/fmIgkut.md.jpg" class="slide">
+<img src="https://iili.io/fmIgvwX.md.jpg" class="slide">
+<img src="https://iili.io/fmIgUns.md.jpg" class="slide">
+<img src="https://iili.io/fmI4OhX.md.png" class="slide">
+<img src="https://iili.io/fmI69yB.md.png" class="slide">
+<img src="https://iili.io/fmIraiG.md.jpg" class="slide">
+<img src="https://iili.io/fmI6KGa.md.png" class="slide">
+<img src="https://iili.io/fmziQx1.md.png" class="slide">
+<img src="https://iili.io/fmzsoJ4.md.png" class="slide">
+<img src="https://iili.io/fmzs1eV.md.png" class="slide">
+<img src="https://iili.io/fmzsOdv.md.png" class="slide">
+<img src="https://iili.io/fmz6gLu.md.jpg" class="slide">
+</div>
+</section>
+
+<section>
+<h2>Will You Be Mine Forever? 💍</h2>
+<button class="button" onclick="accept()">YES ❤️</button>
+</section>
+
+<footer>
+Made with infinite love 💖 — Yours forever, Sumeet i love you meri jaan♥️🫀, my world🌏 ,my universe 💫 ,my love💗, mera cute🥰little baccha😘🧿🌎,my everything ♾️ ,my jaanu😘♥️🫀, my soulmate🧿🤍,mere baccho ki pyaari💕mummy🤍🧿😘,my cutie pie 🥰😘,my soul🤍 ,my dream 🧡, my home🏡 ,my lifeline 💞, my girl 😊,my always 🧿,my sweetheart💝and my overly cute🥰 pretty 😘 gorgeous 🥰 hot🥵🔥and s e x y💖wife🧿♥️🫀only mine 🤍♾️💍🧿 more than anything in this whole entire universe💫 and more than myself 💞 Mera cute🥰little baccha😘🧿🌎  
+</footer>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-box">
+    <h2>💖 My Promise to You 💖</h2>
+    <p>
+      Dhvani,<br><br>
+      From this rose to forever,<br>
+      I choose you — today, tomorrow, always 🌹<br><br>
+      Will you walk this life with me? 💍
+    </p>
+    <button onclick="closePopup()">Always ❤️</button>
+  </div>
+</div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://tart-beige-qizxagamx9.edgeone.app/Tum%20Ho%20Toh%20Ringtone%20%F0%9F%A5%B0%20__%20Saiyaara%20Movie%20Ringtone%20%E2%9D%A4%EF%B8%8F%20__%20Trending%20Song(MP3_160K).mp3">
+</audio>
+
+<script>
+let attempts=0,beatInterval;
+
+/* Unlock */
+function unlock(val){
+  if(val.toLowerCase()==="dhvani"){
+    lock.style.display="none";
+    startTyping();
+    bgMusic.volume=.6; bgMusic.play();
+    startHeartbeat();
+  }else{
+    attempts++; if(attempts>3) hint.style.display="block";
+  }
+}
+
+/* Typing */
+const text="Every rose reminds me of you… delicate, beautiful, and forever mine 🌹i love you meri jaan♥️🫀, my world🌏 ,my universe 💫 ,my love💗, mera cute🥰little baccha😘🧿🌎,my everything ♾️ ,my jaanu😘♥️🫀, my soulmate🧿🤍,mere baccho ki pyaari💕mummy🤍🧿😘,my cutie pie 🥰😘,my soul🤍 ,my dream 🧡, my home🏡 ,my lifeline 💞, my girl 😊,my always 🧿,my sweetheart💝and my overly cute🥰 pretty 😘 gorgeous 🥰 hot🥵🔥and s e x y💖wife🧿♥️🫀only mine 🤍♾️💍🧿 more than anything in this whole entire universe💫 and more than myself 💞 Mera cute🥰little baccha😘🧿🌎  ";
+let i=0;
+function startTyping(){
+  const interval=setInterval(()=>{
+    typing.textContent+=text[i++];
+    if(i>=text.length) clearInterval(interval);
+  },50);
+}
+
+/* Slideshow */
+let slideIndex=0;
+const slides=document.querySelectorAll(".slide");
+setInterval(()=>{
+  slides.forEach(s=>s.style.display="none");
+  slides[slideIndex].style.display="block";
+  slideIndex=(slideIndex+1)%slides.length;
+},2000);
+
+/* Heartbeat */
+function startHeartbeat(){
+  document.body.classList.add("heartbeat-pulse");
+  rose.classList.add("rose-beat");
+  beatInterval=setInterval(()=>{
+    document.body.classList.remove("heartbeat-pulse");
+    void document.body.offsetWidth;
+    document.body.classList.add("heartbeat-pulse");
+  },830);
+}
+
+/* YES */
+function accept(){
+  clearInterval(beatInterval);
+  beatInterval=setInterval(()=>{
+    document.body.classList.remove("heartbeat-pulse");
+    void document.body.offsetWidth;
+    document.body.classList.add("heartbeat-pulse");
+  },650);
+
+  bgMusic.volume=1;
+
+  const ring=document.createElement("div");
+  ring.id="ring"; ring.textContent="💍";
+  document.body.appendChild(ring);
+
+  setInterval(createPetal,300);
+  setInterval(createStar,800);
+
+  setTimeout(()=>{
+    mainContent.classList.add("blur-bg");
+    popup.style.display="flex";
+  },2000);
+}
+
+/* Close popup */
+function closePopup(){
+  popup.style.display="none";
+  mainContent.classList.remove("blur-bg");
+}
+
+/* Petals */
+function createPetal(){
+  const p=document.createElement("div");
+  p.className="rose-petal"; p.textContent="🌹";
+  p.style.left=Math.random()*100+"vw";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),3000);
+}
+
+/* Stars canvas */
+const canvas=stars,ctx=canvas.getContext("2d");
+let starArr=[];
+function resize(){
+canvas.width=innerWidth;canvas.height=innerHeight;
+starArr=Array.from({length:150},()=>({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5
+}));
+}
+resize();onresize=resize;
+(function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+starArr.forEach(s=>{
+ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
+});
+requestAnimationFrame(animate);
+})();
+</script>
+
+</body>
+</html>
+   
